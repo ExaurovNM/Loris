@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lori.AzureFunctionsApp", "Lori.AzureFunctionsApp\Lori.AzureFunctionsApp.csproj", "{5B5DDECC-612E-42C2-81E8-D29B62B02BA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lori.Domain", "Lori.Domain\Lori.Domain.csproj", "{9CABD62B-B6AE-45A8-BBBA-84AACDEEA84D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5B5DDECC-612E-42C2-81E8-D29B62B02BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B5DDECC-612E-42C2-81E8-D29B62B02BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B5DDECC-612E-42C2-81E8-D29B62B02BA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CABD62B-B6AE-45A8-BBBA-84AACDEEA84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CABD62B-B6AE-45A8-BBBA-84AACDEEA84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CABD62B-B6AE-45A8-BBBA-84AACDEEA84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CABD62B-B6AE-45A8-BBBA-84AACDEEA84D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
