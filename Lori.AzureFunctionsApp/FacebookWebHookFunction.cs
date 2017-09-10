@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
@@ -8,6 +7,8 @@ using Microsoft.Azure.WebJobs.Host;
 using System.Collections.Generic;
 using System;
 using Lori.Domain.DataAccess;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Lori.AzureFunctionsApp
 {
@@ -16,18 +17,11 @@ namespace Lori.AzureFunctionsApp
         [FunctionName("FacebookWebHookFunction")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequestMessage request, TraceWriter log)
         {
-            var query = request.GetQueryNameValuePairs();
-
-            var challenge = query.FirstOrDefault(pairs => pairs.Key == "hub.challenge");
-
-            if(challenge.Equals(default(KeyValuePair<string, string>)))
-            {
-                log.Warning("No challenge parameter");
-            }
-
             await LogRequest(request);
-        }
 
+            return request.CreateResponse();
+        }
+        
         private static async Task LogRequest(HttpRequestMessage request)
         {
             using (var context = new DataBaseContext())
@@ -39,7 +33,8 @@ namespace Lori.AzureFunctionsApp
                     Body = content,
                     Method = request.Method.ToString(),
                     Time = DateTime.UtcNow,
-                    Url = request.RequestUri.ToString()
+                    Url = request.RequestUri.ToString(),
+                    Id = Guid.NewGuid()
                 };
 
                 context.RequestLogs.Add(logEntry);
