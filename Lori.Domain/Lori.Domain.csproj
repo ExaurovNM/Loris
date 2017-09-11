@@ -54,6 +54,8 @@
     <Compile Include="DataAccess\RequestLog.cs" />
     <Compile Include="Facebook\FacebookClient.cs" />
     <Compile Include="Facebook\GetStartedRequest.cs" />
+    <Compile Include="Facebook\Greeting.cs" />
+    <Compile Include="Facebook\GreetingRequest.cs" />
     <Compile Include="Facebook\Message.cs" />
     <Compile Include="Facebook\MessageCallback.cs" />
     <Compile Include="Facebook\MessageEntry.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Facebook\Recepient.cs" />
     <Compile Include="Facebook\Sender.cs" />
     <Compile Include="Facebook\SendMessageRequest.cs" />
+    <Compile Include="Logic\UserMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

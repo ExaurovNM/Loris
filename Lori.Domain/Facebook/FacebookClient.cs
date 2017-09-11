@@ -3,6 +3,8 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Lori.Domain.Facebook
 {
@@ -26,11 +28,32 @@ namespace Lori.Domain.Facebook
             return result;
         }
 
+        public async Task<bool> SendMessage(string text, string[] quickReplies, string recipient)
+        {
+            var messageRequest = SendMessageRequest.Create(text, recipient, quickReplies);
+
+            var result = await SendPostRequest(SendMessageEndpoint, messageRequest);
+
+            return result;
+        }
+
         public async Task<bool> SetGetStartedButton()
         {
             var getStartedRequest = new GetStartedRequest();
 
             var result = await SendPostRequest(ProfileEndpoint, getStartedRequest);
+
+            return result;
+        }
+
+        public async Task<bool> SetStartedText(IEnumerable<Greeting> greetings)
+        {
+            var greetingRequest = new GreetingRequest
+            {
+                Greeting = greetings.ToArray()
+            };
+
+            var result = await SendPostRequest(ProfileEndpoint, greetingRequest);
 
             return result;
         }

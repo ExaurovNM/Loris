@@ -1,5 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Lori.Domain.Facebook
 {
@@ -11,7 +13,7 @@ namespace Lori.Domain.Facebook
         [JsonProperty(PropertyName = "message")]
         public MessageForSend Message { get; set; }
 
-        internal static SendMessageRequest Create(string text, string recipientId)
+        internal static SendMessageRequest Create(string text, string recipientId, string[] quickReplies = null)
         {
             var request = new SendMessageRequest
             {
@@ -25,6 +27,16 @@ namespace Lori.Domain.Facebook
                 }
             };
 
+            if(quickReplies != null && quickReplies.Any())
+            {
+                request.Message.QuickReplies = quickReplies.Select(x => new QuickReply
+                {
+                    Payload = x,
+                    ContentType = "text",
+                    Title = x
+                });
+            }
+
             return request;
         }
     }
@@ -33,5 +45,8 @@ namespace Lori.Domain.Facebook
     {
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+
+        [JsonProperty(PropertyName = "quick_replies")]
+        public IEnumerable<QuickReply> QuickReplies { get; internal set; }
     }
 }

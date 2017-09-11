@@ -9,6 +9,8 @@ using System;
 using Lori.Domain.DataAccess;
 using Newtonsoft.Json;
 using System.Text;
+using Lori.Domain.Logic;
+using Lori.Domain.Facebook;
 
 namespace Lori.AzureFunctionsApp
 {
@@ -17,7 +19,15 @@ namespace Lori.AzureFunctionsApp
         [FunctionName("FacebookWebHookFunction")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequestMessage request, TraceWriter log)
         {
-            await LogRequest(request);
+            //await LogRequest(request);
+
+            var hadler = new UserMessageHandler();
+
+            var content = await request.Content.ReadAsStringAsync();
+
+            var message = JsonConvert.DeserializeObject<MessageCallback>(content);
+
+            await hadler.Handle(message);
 
             return request.CreateResponse();
         }
