@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<All>
+  <Text Name="greeting">
+    <Localization Locale="default">Hello, I'm Pygmy Slow Loris and I may notify you when new film with good rating appears on IMDB</Localization>
+    <Localization Locale="en_us">Hello, I'm Pygmy Slow Loris and I may notify you when new film with good rating appears on IMDB</Localization>
+    <Localization Locale="en_us">Привет, я Малый Толстый лори и я могу сообщить о выходе нового фильма с хорошим рейтингом</Localization>
+  </Text>
+</All>

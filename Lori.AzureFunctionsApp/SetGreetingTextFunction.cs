@@ -19,17 +19,17 @@ namespace Lori.AzureFunctionsApp
             {
                  new Greeting
                 {
-                    Locale = Greeting.Default,
+                    Locale = Locales.Default,
                     Text = "Hello, I'm Pygmy Slow Loris and I may notify you when new film with good rating appears on IMDB"
                 },
                 new Greeting
                 {
-                    Locale = Greeting.En_Us,
+                    Locale = Locales.En_Us,
                     Text = "Hello, I'm Pygmy Slow Loris and I may notify you when new film with good rating appears on IMDB"
                 },
                 new Greeting
                 {
-                    Locale = Greeting.Ru_Ru,
+                    Locale = Locales.Ru_Ru,
                     Text = "Привет, я Малый Толстый лори и я могу сообщить о выходе нового фильма с хорошим рейтингом"
                 }
             };
